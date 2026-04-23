@@ -41,11 +41,10 @@ if (conteudo.tags.contains(humor)) {
 
 ## 🏗️ Tecnologias
 
-* Java (Android)
+* Java (lógica e Android)
 * Android Studio
 * SQLite / Room
-* GitHub (versionamento)
-* Azure DevOps (Scrum e organização)
+* GitHub (Scrum e versionamento)
 * APIs externas:
 
   * TMDB (filmes)
@@ -58,34 +57,41 @@ if (conteudo.tags.contains(humor)) {
 ```
 echomood/
 │
-├── backend/
-│   ├── src/
-│   ├── controller/
-│   ├── service/
-│   ├── model/
-│   └── repository/
+├── core/                     # Lógica em Java puro
+│   └── src/main/java/com/echomood/
+│       ├── model/            # Entidades (Conteudo, Usuario, etc.)
+│       └── service/          # Algoritmo de recomendação
 │
-├── frontend/
-│   ├── android-app/
-│   │   ├── java/
-│   │   ├── res/
-│   │   └── layout/
+├── android-app/              # Aplicação Android
+│   └── app/src/main/java/com/echomood/
+│       ├── model/            # Model adaptado (@Entity)
+│       ├── service/          # Reutilização da lógica
+│       ├── repository/       # Acesso a dados
+│       ├── database/         # Room (SQLite)
+│       ├── api/              # Integração com APIs externas
+│       └── ui/               # Interface do usuário
 │
-├── database/
-│   ├── schema.sql
-│   └── scripts/
-│
-├── docs/
+├── docs/                     # Documentação
 │   ├── arquitetura.md
 │   ├── algoritmo.md
 │   └── requisitos.md
 │
-├── assets/
-│   ├── imagens/
-│   └── icones/
-│
 └── README.md
 ```
+---
+
+## 🔄 Arquitetura
+O sistema segue uma arquitetura em camadas:
+
+Model → estrutura dos dados
+
+Service → lógica de recomendação
+
+Repository → acesso a dados (local + API)
+
+Database → persistência local (Room)
+
+API Client → consumo de APIs externas
 
 ---
 
@@ -116,8 +122,15 @@ Projeto desenvolvido para aplicação prática de:
 ---
 
 ## 📸 Protótipos
+O design da interface foi desenvolvido no Figma:
 
-Design feito no Figma (link em breve)
+🔗 [Acessar protótipo](https://www.figma.com/design/1mPZa8doX4Al9ElUraYDJO/EchoMood-prot%C3%B3tipo?node-id=0-1&t=dqJRyaipKh3reiPW-1)
+
+protótipo apresenta o fluxo principal do aplicativo, incluindo:
+- Seleção de humor
+- Tela de recomendações
+- Navegação por conteúdos
+- Interface baseada em emoções e vibes
 
 ---
 
